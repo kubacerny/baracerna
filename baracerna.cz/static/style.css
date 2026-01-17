@@ -1,0 +1,357 @@
+:root {
+  /* Default = LIGHT */
+  --bg: #0a0f1c;
+  --page-text: rgba(12, 16, 24, 0.92);
+  --page-muted: rgba(12, 16, 24, 0.74);
+
+  --panel-bg: rgba(255, 255, 255, 0.84);
+  --panel-border: rgba(255, 255, 255, 0.75);
+  --panel-shadow: rgba(0, 0, 0, 0.28);
+
+  --pill-border: rgba(12, 16, 24, 0.14);
+  --pill-bg: rgba(12, 16, 24, 0.04);
+  --pill-text: rgba(12, 16, 24, 0.70);
+  --pill-hover-bg: rgba(12, 16, 24, 0.07);
+
+  --kicker-text: rgba(12, 16, 24, 0.62);
+  --kicker-line: rgba(70, 95, 210, 0.75);
+
+  --section-title: rgba(12, 16, 24, 0.62);
+
+  --toggle-bg: rgba(255, 255, 255, 0.70);
+  --toggle-border: rgba(12, 16, 24, 0.12);
+  --toggle-text: rgba(12, 16, 24, 0.84);
+
+  /* Úhlava page: light look */
+  --uhlava-bg: #f6f7fb;
+  --uhlava-grad-1: rgba(70, 95, 210, 0.18);
+  --uhlava-grad-2: rgba(255, 170, 120, 0.14);
+  --uhlava-card: rgba(255, 255, 255, 0.88);
+  --uhlava-border: rgba(12, 16, 24, 0.10);
+  --uhlava-text: rgba(12, 16, 24, 0.92);
+  --uhlava-muted: rgba(12, 16, 24, 0.70);
+  --uhlava-shadow: rgba(0, 0, 0, 0.14);
+  --uhlava-chip-bg: rgba(255, 255, 255, 0.70);
+  --uhlava-hero-grad-top: rgba(255, 255, 255, 0.72);
+  --uhlava-hero-grad-bottom: rgba(255, 255, 255, 0.42);
+}
+
+html[data-theme="dark"] {
+  --bg: #0a0f1c;
+  --page-text: rgba(255, 255, 255, 0.94);
+  --page-muted: rgba(255, 255, 255, 0.74);
+
+  --panel-bg: rgba(7, 10, 18, 0.78);
+  --panel-border: rgba(255, 255, 255, 0.14);
+  --panel-shadow: rgba(0, 0, 0, 0.50);
+
+  --pill-border: rgba(255, 255, 255, 0.16);
+  --pill-bg: rgba(255, 255, 255, 0.06);
+  --pill-text: rgba(255, 255, 255, 0.82);
+  --pill-hover-bg: rgba(255, 255, 255, 0.10);
+
+  --kicker-text: rgba(255, 255, 255, 0.74);
+  --kicker-line: rgba(199, 169, 255, 0.85);
+
+  --section-title: rgba(255, 255, 255, 0.78);
+
+  --toggle-bg: rgba(0, 0, 0, 0.30);
+  --toggle-border: rgba(255, 255, 255, 0.14);
+  --toggle-text: rgba(255, 255, 255, 0.88);
+
+  --uhlava-bg: #070b14;
+  --uhlava-grad-1: rgba(156, 220, 255, 0.18);
+  --uhlava-grad-2: rgba(255, 204, 160, 0.10);
+  --uhlava-card: rgba(10, 14, 24, 0.62);
+  --uhlava-border: rgba(255, 255, 255, 0.14);
+  --uhlava-text: rgba(255, 255, 255, 0.92);
+  --uhlava-muted: rgba(255, 255, 255, 0.74);
+  --uhlava-shadow: rgba(0, 0, 0, 0.55);
+  --uhlava-chip-bg: rgba(255, 255, 255, 0.06);
+  --uhlava-hero-grad-top: rgba(255, 255, 255, 0.06);
+  --uhlava-hero-grad-bottom: rgba(0, 0, 0, 0.12);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--page-text);
+}
+
+a { color: inherit; }
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+}
+
+.theme-toggle button {
+  appearance: none;
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-bg);
+  color: var(--toggle-text);
+  padding: 10px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle button:hover {
+  filter: brightness(1.06);
+}
+
+.theme-toggle .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.9;
+}
+
+/* Shared layout */
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(18px, 4vw, 44px);
+}
+
+/* Homepage */
+.home-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.16) 55%, rgba(0,0,0,0.40) 100%),
+    url("/static/bara-2024-malba-plachetnice-na-mori-pri-zapadu-slunce.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(1.04) contrast(1.03);
+  z-index: -1;
+}
+
+html[data-theme="dark"] .home-bg {
+  background-image:
+    linear-gradient(90deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.74) 100%),
+    url("/static/bara-2024-malba-plachetnice-na-mori-pri-zapadu-slunce.jpg");
+  filter: saturate(1.05) contrast(1.04);
+}
+
+.home-frame {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.panel {
+  width: min(560px, 92vw);
+  margin: clamp(18px, 4vw, 44px);
+  padding: clamp(18px, 3vw, 34px);
+  border-radius: 18px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 22px 70px var(--panel-shadow);
+}
+
+@media (min-width: 900px) {
+  .panel { margin: clamp(28px, 6vw, 64px); }
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--kicker-text);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.kicker::before {
+  content: "";
+  width: 44px;
+  height: 2px;
+  background: var(--kicker-line);
+  border-radius: 999px;
+}
+
+.home-title {
+  margin: 14px 0 10px;
+  font-size: clamp(38px, 5.5vw, 62px);
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+.home-lead {
+  margin: 0;
+  color: var(--page-muted);
+  line-height: 1.65;
+  font-size: clamp(16px, 2.1vw, 20px);
+}
+
+.section-title {
+  margin-top: 18px;
+  color: var(--section-title);
+  font-size: 13px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--pill-border);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.pill:hover { background: var(--pill-hover-bg); }
+
+/* Úhlava page */
+.uhlava-body {
+  background:
+    radial-gradient(1100px 650px at 20% 0%, var(--uhlava-grad-1), transparent 60%),
+    radial-gradient(1100px 650px at 85% 90%, var(--uhlava-grad-2), transparent 60%),
+    var(--uhlava-bg);
+  color: var(--uhlava-text);
+}
+
+.uhlava-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--uhlava-muted);
+  margin: 36px 0 14px;
+}
+
+.crumb-sep { opacity: 0.55; }
+
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--uhlava-border);
+  background: var(--uhlava-chip-bg);
+  color: var(--uhlava-text);
+  text-decoration: none;
+}
+
+.home-link:hover { filter: brightness(1.06); }
+
+.uhlava-hero {
+  padding: clamp(16px, 3vw, 26px);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--uhlava-hero-grad-top), var(--uhlava-hero-grad-bottom)), var(--uhlava-card);
+  border: 1px solid var(--uhlava-border);
+  box-shadow: 0 26px 90px var(--uhlava-shadow);
+  backdrop-filter: blur(12px);
+}
+
+.uhlava-title {
+  margin: 0;
+  font-size: clamp(36px, 5vw, 62px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.uhlava-sub {
+  margin-top: 10px;
+  color: var(--uhlava-muted);
+  font-size: 16px;
+}
+
+.uhlava-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+@media (max-width: 860px) {
+  .uhlava-grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  padding: clamp(16px, 2.8vw, 24px);
+  border-radius: 18px;
+  background: var(--uhlava-chip-bg);
+  border: 1px solid var(--uhlava-border);
+  backdrop-filter: blur(10px);
+}
+
+.uhlava-text {
+  margin: 0;
+  color: var(--uhlava-text);
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+.player {
+  display: grid;
+  gap: 10px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--uhlava-muted);
+}
+
+.label::before {
+  content: "";
+  width: 44px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(156, 220, 255, 0.92), rgba(255, 204, 160, 0.90));
+  box-shadow: 0 0 0 6px rgba(156, 220, 255, 0.10);
+}
+
+audio { width: 100%; }
+
+.meta {
+  display: grid;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--uhlava-muted);
+  line-height: 1.6;
+}
+
+.meta strong { color: var(--uhlava-text); }
+
+ul { margin: 8px 0 0; padding-left: 18px; }
+li { margin: 4px 0; }
+
+.site-footer {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+}
+
+html:not([data-theme="dark"]) .site-footer {
+  color: rgba(12, 16, 24, 0.55);
+}

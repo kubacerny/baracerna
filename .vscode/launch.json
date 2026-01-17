@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run: Serve baracerna.cz",
+      "program": "${workspaceFolder}/local-webserver.js",
+      "args": ["${workspaceFolder}/baracerna.cz"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run: Serve baracerna.com",
+      "program": "${workspaceFolder}/local-webserver.js",
+      "args": ["${workspaceFolder}/baracerna.com"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

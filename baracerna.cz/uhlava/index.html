@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="cs">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Úhlava — Bára Černá</title>
+		<meta name="description" content="Pocta řece Úhlavě — ročníkový projekt: hudební skladba." />
+		<link rel="stylesheet" href="/static/style.css" />
+		<script src="/static/app.js" defer></script>
+	</head>
+	<body class="uhlava-body">
+		<div class="theme-toggle">
+			<button type="button" data-theme-toggle aria-pressed="false">
+				<span class="dot" aria-hidden="true"></span>
+				<span data-theme-label>light mode</span>
+			</button>
+		</div>
+
+		<div class="wrap">
+			<nav class="uhlava-nav" aria-label="Drobečková navigace">
+				<a href="/" class="home-link">← Domů</a>
+				<span class="crumb-sep">/</span>
+				<span aria-current="page">Úhlava</span>
+			</nav>
+
+			<header class="uhlava-hero">
+				<h1 class="uhlava-title">Úhlava</h1>
+				<div class="uhlava-sub">pocta řece Úhlavě.</div>
+			</header>
+
+			<section class="uhlava-grid" aria-label="Obsah">
+				<div class="card">
+					<p class="uhlava-text">
+						Miluji hudbu a proto jsem si jako ročníkový projekt vybrala složit hudební skladbu.
+						Když mohl Smetana složit nádhernou Vltavu, tak bych mohla zkusit jinou řeku.
+						Vydali jsme se s mamkou a kamarádkami na vandr od pramene Úhlavy na Pancíři na Šumavě
+						až k jejímu soutoku se Mží do Plzně. To jak se měnila krajina mě inspirovalo k této skladbě.
+					</p>
+				</div>
+
+				<aside class="card player" aria-label="Přehrávač a informace">
+					<div class="label">Přehrát skladbu</div>
+					<audio controls preload="metadata">
+						<source src="/static/BaraCerna_Uhlava_2026_v3.mp3" type="audio/mpeg" />
+						Váš prohlížeč nepodporuje přehrávání audia.
+					</audio>
+
+					<div class="meta">
+						<div><strong>Hrají:</strong></div>
+						<ul>
+							<li>Housle 1: Bára Černá</li>
+							<li>Piano: Bára Černá</li>
+							<li>Harfa: Julča</li>
+							<li>Housle 2: Jára</li>
+						</ul>
+						<div><strong>Nahrávku ve svém studiu nahrál a upravil:</strong> Jirka Mucha</div>
+                        <div><strong>Další poděkování:</strong> 
+                            <ul>
+                                <li>Mamka a kamarádky za podporu a společnost na vandru</li>
+                                <li>Petr Zeman (pomoc s přepisem do not,...)</li>
+                                <li>Šťovíčková (učitelka na housle)</li>
+                            </ul>
+                        </div>
+					</div>
+				</aside>
+			</section>
+
+			<footer class="site-footer">
+				Tip: pokud chceš, můžeš sem později přidat fotky z vandru nebo krátké kapitoly (pramen → Plzeň).
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Serve baracerna.cz",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/local-webserver.js",
+        "${workspaceFolder}/baracerna.cz"
+      ],
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Serve baracerna.com",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/local-webserver.js",
+        "${workspaceFolder}/baracerna.com"
+      ],
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
