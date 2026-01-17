@@ -1,5 +1,8 @@
 // Smooth scrolling for navigation links (additional fallback for older browsers)
 document.addEventListener('DOMContentLoaded', function() {
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     const links = document.querySelectorAll('a[href^="#"]');
     
     links.forEach(link => {
@@ -20,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add active class to navigation links based on scroll position
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
+    const SCROLL_OFFSET = 100; // Offset from top for determining active section
 
     function setActiveLink() {
         let currentSection = '';
@@ -28,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
-            if (window.pageYOffset >= sectionTop - 100) {
+            if (window.pageYOffset >= sectionTop - SCROLL_OFFSET) {
                 currentSection = section.getAttribute('id');
             }
         });
