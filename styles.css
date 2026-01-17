@@ -74,6 +74,11 @@ nav .container {
     color: var(--secondary-color);
 }
 
+.nav-links a.active {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
 /* Hero Section */
 #hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
