@@ -2,6 +2,11 @@
 
 At the moment, just simple static content.
 
+## License
+
+See [LICENSE](LICENSE). In short: all rights reserved; no permission is granted to reuse repository contents.
+In particular, images and audio (MP3) are not licensed for reuse without a separate written license.
+
 ## Local development
 
 ```
