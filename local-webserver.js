@@ -17,6 +17,7 @@ const MIME_TYPES = {
   svg: "image/svg+xml",
 };
 
+
 const STATIC_PATH = path.resolve(process.argv[2] ?? path.join(process.cwd(), "static"));
 
 const toBool = [() => true, () => false];
@@ -66,17 +67,39 @@ const prepareFile = async (url) => {
   return { found: false, ext: "txt", body: "404 Not Found\n" };
 };
 
-http
-  .createServer(async (req, res) => {
-    const file = await prepareFile(req.url);
-    const statusCode = file.found ? 200 : 404;
-    const mimeType = MIME_TYPES[file.ext] || MIME_TYPES.default;
-    res.writeHead(statusCode, { "Content-Type": mimeType });
-    if (file.stream) file.stream.pipe(res);
-    else res.end(file.body ?? "");
-    console.log(`${req.method} ${req.url} ${statusCode}`);
-  })
-  .listen(PORT);
+const requestHandler = async (req, res) => {
+  const file = await prepareFile(req.url);
+  const statusCode = file.found ? 200 : 404;
+  const mimeType = MIME_TYPES[file.ext] || MIME_TYPES.default;
+  res.writeHead(statusCode, { "Content-Type": mimeType });
+  if (file.stream) file.stream.pipe(res);
+  else res.end(file.body ?? "");
+  console.log(`${req.method} ${req.url} ${statusCode}`);
+};
 
 console.log(`Serving static files from: ${STATIC_PATH}`);
-console.log(`Server running at http://127.0.0.1:${PORT}/`);
+
+// Listen on both IPv6 and IPv4 loopback to support localhost and 127.0.0.1
+const servers = [];
+
+const listen = (host, label) => {
+  const srv = http.createServer(requestHandler);
+  srv.on("error", (err) => {
+    if (err && err.code === "EADDRINUSE") {
+      console.warn(`Port ${PORT} already bound for ${host}, skipping.`);
+    } else if (err && (err.code === "EADDRNOTAVAIL" || err.code === "EAFNOSUPPORT")) {
+      console.warn(`Address ${host} not available, skipping.`);
+    } else {
+      console.error(`Server error on ${host}:`, err);
+    }
+  });
+  srv.listen({ port: PORT, host }, () => {
+    console.log(`Server running at http://${label}:${PORT}/`);
+  });
+  servers.push(srv);
+};
+
+// Try IPv6 loopback first (works when localhost resolves to ::1)
+listen("::1", "[::1]");
+// Also bind IPv4 loopback so 127.0.0.1 works even if IPv6 is v6-only
+listen("127.0.0.1", "127.0.0.1");
